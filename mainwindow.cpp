@@ -30,7 +30,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	menu->addAction(actionClose);
 	connect(actionShow, &QAction::triggered, this, &MainWindow::getShow);
 	connect(actionClose, &QAction::triggered, this, &MainWindow::getExit);
-	icon->setToolTip(tr("Press Ctrl+~ to hide your task bar"));
+	icon->setToolTip(tr("TaskBarKiller - Press Ctrl+~ to hide your task bar"));
 
 	//--------------------------------------------- auto start
 	/* if auto start for all users
@@ -41,7 +41,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	QSettings reg("HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", QSettings::NativeFormat);
 	QString appName = QApplication::applicationName();
 	QString strAppPath=QDir::toNativeSeparators(QCoreApplication::applicationFilePath());
-	reg.setValue(appName,strAppPath);
+	reg.setValue(appName,strAppPath + tr(" autoStart"));
 }
 
 MainWindow::~MainWindow()
